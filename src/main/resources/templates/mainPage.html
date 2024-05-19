@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <title>Pastebin project</title>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        .card {
+            background: #236681;
+            color: #fff;
+        }
+    </style>
+</head>
+<body style="background-color:powderblue;">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1>Text saver:</h1>
+            <textarea id="titleTextarea" rows="2" cols="168.5" style="background-color: hsla(187, 100%, 50%, 0.664);" placeholder="Write your text TITLE here" maxlength="50"></textarea>
+            <textarea id="contentTextarea" rows="2" cols="168.5" style="background-color: hsla(187, 100%, 50%, 0.664);" placeholder="Write your text CONTENT here"></textarea>
+            <button id="addText" type="button" class="btn btn-success" onclick="addText()">
+                Add the Text in your List
+            </button>
+        </div>
+    </div>
+    <br>
+    <div class="card">
+        <div class="card-body" id="savedTexts">
+            <h5>List of saved texts:</h5>
+            <ul>
+                <li th:each="text : ${savedTexts}">
+                    <span th:text="${text.title}"></span>
+                    <a th:href="@{'/texts/' + ${text.id}}">View the text</a>
+                    <br>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>

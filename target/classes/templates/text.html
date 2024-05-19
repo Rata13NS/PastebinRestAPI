@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Text</title>
+</head>
+<body>
+<div id="text"></div>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const textId = urlParams.get('id');
+
+    fetch(`/texts/${textId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('text').innerText = JSON.stringify(data, null, 4);
+        })
+        .catch(error => console.error('Error:', error));
+</script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>
